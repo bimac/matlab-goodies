@@ -9,16 +9,18 @@ function addpathr(varargin)
 for d = varargin
     if isdir(d{:})
         
-        % add current directory
+        % add current directory to search path
         addpath(d{:})
         
+        % find valid subdirectories
+        sub = dir(d{:});
+        sub = sub([sub.isdir]);
+        sub = {sub(~cellfun(@isempty,{sub.date})).name}; 
+        sub = sub(cellfun(@isempty,regexpi(sub,'^[.+@]','once')));
+        sub = fullfile(d{:},sub);
+        
         % process subdirectories
-        tmp = dir(d{:});
-        tmp = tmp([tmp.isdir]);
-        tmp = tmp(~cellfun('isempty',{tmp.date})); 
-        tmp = {tmp(cellfun('isempty',regexpi({tmp.name},'^[.+@]'))).name};
-        tmp = fullfile(d{:},tmp);
-        addpathr(tmp{:})
+        addpathr(sub{:})
 
     else
         return
