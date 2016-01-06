@@ -4,7 +4,7 @@ function addpathr(varargin)
 %   subdirectories to the MATLAB search path. Hidden folders and MATLAB
 %   special folders are being ignored.
 %
-% (c) 2015 Florian Rau
+% (c) 2016 Florian Rau
 
 for d = varargin
     if isdir(d{:})
