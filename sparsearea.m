@@ -15,13 +15,13 @@ if nargin == 1
     p = {};
     
 elseif nargin == 2
-    validateattributes(varargin{1},{'numeric','handle'},{'2d'})
     validateattributes(varargin{2},{'numeric'},{'2d'})
     if ishandle(varargin{1})
         h = varargin{1};
         y = varargin{2};
         x = 1:length(y);
     else
+        validateattributes(varargin{1},{'numeric'},{'2d'})
         h = gca;
         x = varargin{1};
         y = varargin{2};
