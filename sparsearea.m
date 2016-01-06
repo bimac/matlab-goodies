@@ -1,4 +1,11 @@
 function hh = sparsearea(varargin)
+% SPARSEAREA  Sparse area plot.
+%   Should work exactly like MATLAB's AREA but skips unneccessary samples
+%   (samples are dropped, if their 2nd derivative is zero). Compared to
+%   AREA, SPARSEAREA will draw faster and produce smaller file sizes when
+%   saving plots as vector graphics.
+%
+% (c) 2015 Florian Rau
 
 if nargin == 1
     validateattributes(varargin{1},{'numeric'},{'2d'})
@@ -44,7 +51,7 @@ end
 [msg,x,y] = xychk(x,y,'plot');
 if ~isempty(msg), error(msg); end
 
-i = unique([1; find(diff(diff(y)))+1; length(y)]);
+i = unique([1; find(diff(x,2))+1; find(diff(y,2))+1; length(y)]);
 
 h = area(h,x(i),y(i),p{:});
 if nargout>0, hh = h; end;
