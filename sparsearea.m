@@ -2,8 +2,8 @@ function hh = sparsearea(varargin)
 % SPARSEAREA  Sparse area plot.
 %   Should work exactly like MATLAB's AREA but skips unneccessary samples
 %   (samples are dropped, if their 2nd derivative is zero). Compared to
-%   AREA, SPARSEAREA will draw faster and produce smaller files when
-%   saving plots as vector graphics.
+%   AREA, SPARSEAREA should draw faster and result in smaller vector
+%   graphic files.
 %
 % (c) 2015 Florian Rau
 
