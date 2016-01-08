@@ -1,3 +1,3 @@
-# matlab-goodies-FR
+# matlab-goodies
 
 Various small MATLAB scripts
