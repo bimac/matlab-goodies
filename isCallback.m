@@ -12,12 +12,12 @@ if numel(stack) < 2
 end
 
 % extract name of functions from function call stack
-fn = regexpi({stack.name},'(?:^|\.)(\w*)(?:\([^\)]*\))?$','tokens','once');
+fn = regexpi({stack.name},'([a-zA-Z]\w*)(?:\([^\)]*\))?$','tokens','once');
 if numel(fn) < 2
     out = false;
 	return
 end
-fn  = [fn{end-1:end}];
+fn  = [fn{1:2}];
 
 % return result
 out = isequal(fn{:}) && any(strfind(stack(2).name,'(varargin{:})'));
